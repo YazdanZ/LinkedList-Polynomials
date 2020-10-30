@@ -3,25 +3,19 @@ package assignment2;
 import java.lang.Iterable;
 import java.util.Iterator;
 
-// The "extends" (rather than "implements") in the generic type definition. 
-// We'll briefly talk about it next week in class. 
-public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
-{
- // Fields
- private SNode<E> head;    
- private SNode<E> tail;  
- private int   size;  
+public class SLinkedList<E extends DeepClone<E>> implements Iterable<E> {
 
- // Constructor
- SLinkedList()
- {
+ private SNode<E> head;
+ private SNode<E> tail;  
+ private int size;
+
+ SLinkedList() {
   head  = null;
   tail  = null;
   size  = 0;
  }
 
- public int size()
- {
+ public int size() {
   return size;
  }
  
@@ -32,8 +26,7 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
   * @param i  the position where the element should go
   * @param element  the element to be added 
   */
- public void add(int i, E element)
- {
+ public void add(int i, E element) {
   if ((i < 0) || (i > size))
    throw new IndexOutOfBoundsException();
 
@@ -42,36 +35,34 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
    addFirst(element);
   else if (i == size)         
    addLast(element);       
-  else 
-  {
+  else {
    // Now the general case
    SNode<E> previousNode = getNode(i-1);     //  undefined if i==0
    SNode<E> newNode = new SNode<E>(element);
    newNode.next = previousNode.next;
    previousNode.next = newNode;
    size++;
-  }   
+  }
+
  }
 
  /**
   * add a new element to front of list 
   * @param element the new element
   */
- public void addFirst(E element)
- { 
+ public void addFirst(E element) {
   SNode<E> newNode = new SNode<E>(element); 
   size++;
 
-  if (head == null)
-  {
+  if (head == null) {
    head = newNode;
    tail = head; 
   }
-  else
-  {
+  else {
    newNode.next = head;                             
    head = newNode;       
   }
+
  }
 
  /**
@@ -82,23 +73,21 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
  {
   SNode<E> newNode = new SNode<E>(element); 
   size++;
-  if (head == null)
-  {
+  if (head == null) {
    head = newNode;
    tail = newNode;
   }
-  else
-  {
+  else {
    tail.next = newNode;
    tail = newNode;
   }
+
  }
 
  /**
   * remove all elements from the list
   */
- public void clear()
- {
+ public void clear() {
   head  = null;
   tail  = null;
   size  = 0;
@@ -109,14 +98,12 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
   * @param i  the index of the element
   * @return the element to get
   */
- public E get(int i)
- {
+ public E get(int i) {
   return getNode(i).element;
  }
  
   
- public boolean isEmpty()
- { 
+ public boolean isEmpty() {
   return (size == 0); 
  }
 
@@ -124,15 +111,14 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
   *   Removes the element at index i  in  0 to size-1, and return it.
   *   @return the element at index i.
   */
- public E remove(int i)
- { 
+ public E remove(int i) {
   if ((i < 0) || (i >= size))
    throw new IndexOutOfBoundsException();
   else {
 
    //  first deal with special case that size == 1, i == 0
-   if (size == 1) //  only one node in list
-   {   
+   //  only one node in list
+   if (size == 1) {
     size--;
     SNode<E> cur = head;
     head = null;  
@@ -149,8 +135,9 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
     head = head.next;
     return cur.element;
    }
-   else //  we can assume that i > 0
-   {  
+
+   //  we can assume that i > 0
+   else {
     cur = getNode(i-1);
     SNode<E> nodeToRemove = cur.next;
     cur.next = nodeToRemove.next;
@@ -186,8 +173,7 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
   *   @param i  the index of element to be set
   *   @param e  the new element that replaces the old element   
   */
- public void set(int i,  E  e)
- {
+ public void set(int i,  E  e) {
   if ((i < 0) || (i >= size))
    throw new IndexOutOfBoundsException();
   else
@@ -196,8 +182,7 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
 
  // Useful for debugging
  @Override
- public String toString()
- { 
+ public String toString() {
   String ret = "List:";
   // If it's an empty list
   if (head == null)
@@ -205,8 +190,8 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
 
   // Exploit E.toString()
   SNode<E> current = head;
-  while (current != null)
-  {
+
+  while (current != null) {
    ret += " " + current.element.toString();
    current = current.next;
   }
@@ -220,30 +205,29 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
   *  TODO: Makes a deep copy of the this linked list.
   *  Hint: Use E.deepCopy().
   */
- public SLinkedList<E> deepClone()
- {
-  /**** ADD CODE HERE ****/
+ public SLinkedList<E> deepClone() {
+  SLinkedList<E> sLinkedListDeepClone = new SLinkedList<> ();
 
-  return null;
+  for (E element : this)
+   sLinkedListDeepClone.addLast ( element.deepClone () );
+
+  return sLinkedListDeepClone;
  }
 
 
  // The following method is private. The client has no access to the nodes of the linked list, 
  // but rather the client can only access the elements that are stored in the list.
  /**
-  *     @param  index of node to get
+  *     @param  i index of node to get
   *     @return ith SNode of the linked list     
   */
- private SNode<E> getNode(int i)
- {
+ private SNode<E> getNode(int i) {
   if ((i < 0) || (i >= size))
    throw new IndexOutOfBoundsException();
-  else
-  {  
+  else {
    if (i == 0)   //  only one node in list
     return head; 
-   else
-   {
+   else {
     int index = 0; 
     SNode<E> cur = head;
     while (index < i){   
@@ -276,11 +260,12 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E>
  {
   SLLIterator iter = new SLLIterator(this);
   return iter;
+
  }
 
  private class SLLIterator implements Iterator<E>
  {   // use a different generic type, since we're defining a new class here
-  SNode<E>    cur;
+  SNode<E> cur;
 
   // constructor
   SLLIterator(SLinkedList<E>  list)
