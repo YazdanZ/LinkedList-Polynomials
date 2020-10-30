@@ -293,6 +293,7 @@ public class Minitester {
     }
 
     public static void main ( String[] args ) {
+
         testAddTerm1 ();
         testAddTerm2 ();
         testAddTerm3 ();

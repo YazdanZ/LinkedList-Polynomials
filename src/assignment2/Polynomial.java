@@ -23,39 +23,59 @@ public class Polynomial implements DeepClone<Polynomial> {
         return new Polynomial ( polynomial.deepClone () );
     }
 
-    /*
-     * TODO: Add new term to the polynomial. Also ensure the polynomial is
-     * in decreasing order of exponent.
+    /**
+     * Add a new term to the polynomial.
+     * Added terms will be inserted in the polynomial so that terms are
+     * sorted by exponents. If a term with the same exponent as the one we
+     * want to add exists, the method will simply add their coefficients
+     *
+     * @param t term to add
      */
     public void addTerm ( Term t ) {
         // Check if the term to be added to the polynomial is a valid term
         if (t.getExponent () < 0 || t.getCoefficient ().compareTo ( new BigInteger ( "0" ) ) == 0)
             return;
 
+        // if we have an empty polynomial we can add the Term without finding its position to insert
+        if(size () == 0){
+            polynomial.addFirst ( t );
+            return;
+        }
+
+        // to keep record of the index to be able to insert the term in the middle of the list if required
+        int position = 0;
         for (Term term : polynomial) {
 
             // if there exists a term with the same exponent as the term
             // we want to add, we can add their coefficients instead
             if (term.getExponent () == t.getExponent ()) {
 
+                BigInteger newCoefficient = term.getCoefficient ().add ( t.getCoefficient () );
+                term.setCoefficient ( newCoefficient );
+
+                break;
             }
+
+            // because the polynomial terms should be in decreasing order of exponents,
+            // we verify if the current term's exponent is smaller than the exponent of
+            // the term we want to add. This is done to find the right index to insert the term
+            if(term.getExponent () < t.getExponent ()){
+                polynomial.add ( position, t );
+                break;
+            }
+
+            // if we are getting to the end of our polynomial and none of the above if statements were true
+            // we can simply add the term to the end of the polynomial
+            if(position == size () - 1){
+                polynomial.addLast ( t );
+                break;
+            }
+
+            // update the index
+            position++;
         }
-
-        /**** ADD CODE HERE ****/
-
-        // Hint: Notice that the function SLinkedList.get(index) method is O(n),
-        // so if this method were to call the get(index)
-        // method n times then the method would be O(n^2).
-        // Instead, use a Java enhanced for loop to iterate through
-        // the terms of an SLinkedList.
-  /*
-  for (Term currentTerm: polynomial)
-  {
-   // The for loop iterates over each term in the polynomial!!
-   // Example: System.out.println(currentTerm.getExponent()) should print the exponents of each term in the polynomial when it is not empty.  
-  }
-  */
     }
+
 
     public Term getTerm ( int index ) {
         return polynomial.get ( index );
