@@ -199,11 +199,11 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E> {
   ret += "\nSize: " + this.size;
   return ret;
  }
- 
- 
- /*
-  *  TODO: Makes a deep copy of the this linked list.
-  *  Hint: Use E.deepCopy().
+
+
+ /**
+  * Make a deep clone of the linkedList
+  * @return deep cloned list
   */
  public SLinkedList<E> deepClone() {
   SLinkedList<E> sLinkedListDeepClone = new SLinkedList<> ();
