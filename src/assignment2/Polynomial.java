@@ -123,9 +123,16 @@ public class Polynomial implements DeepClone<Polynomial> {
 
     //TODO: multiply two polynomials
     public static Polynomial multiply ( Polynomial p1, Polynomial p2 ) {
-        /**** ADD CODE HERE ****/
 
-        return null;
+        Polynomial resultPolynomial = new Polynomial ();
+
+        for ( Term term : p1.polynomial ){
+            Polynomial deepClonedPolynomial = p2.deepClone ();
+            deepClonedPolynomial.multiplyTerm ( term );
+            resultPolynomial = Polynomial.add (resultPolynomial, deepClonedPolynomial);
+        }
+
+        return resultPolynomial;
     }
 
     // TODO: evaluate this polynomial.
