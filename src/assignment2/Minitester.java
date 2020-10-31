@@ -294,6 +294,13 @@ public class Minitester {
 
     public static void main ( String[] args ) {
 
+        Polynomial polynomial = new Polynomial ();
+        polynomial.addTerm ( new Term ( 4, new BigInteger ( "2" ) ) );
+//        polynomial.addTerm ( new Term ( 3, new BigInteger ( "3" ) ) );
+//        polynomial.addTerm ( new Term ( 2, new BigInteger ( "1" ) ) );
+//        polynomial.addTerm ( new Term ( 2, new BigInteger ( "5" ) ) );
+        System.out.println (polynomial.eval ( new BigInteger ( "3" ) ).toString ());
+
         testAddTerm1 ();
         testAddTerm2 ();
         testAddTerm3 ();

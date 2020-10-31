@@ -145,8 +145,44 @@ public class Polynomial implements DeepClone<Polynomial> {
     // the terms of an SLinkedList.
 
     public BigInteger eval ( BigInteger x ) {
-        /**** ADD CODE HERE ****/
-        return new BigInteger ( "0" );
+
+        // deep clone polynomial to make sure we don't change
+        // any of the original polynomial fields
+        Polynomial clonedPolynomial = this.deepClone ();
+
+        // it is an empty polynomial
+        if(size () == 0)
+            return new BigInteger ( "0" );
+
+        BigInteger result = null;
+        Term currentTerm = null;
+
+        int index = 1;
+        for ( Term nextTerm : clonedPolynomial.polynomial) {
+
+            if ( currentTerm == null){
+                currentTerm = nextTerm;
+                result = currentTerm.getCoefficient ();
+
+                continue;
+
+            }
+
+            if (nextTerm.getExponent () == currentTerm.getExponent () - 1 ){
+                result = result.multiply ( x ).add ( nextTerm.getCoefficient () );
+
+                if(index == size () - 1){
+                    for (int i = 0; i < nextTerm.getExponent (); i++){
+                        result = result.multiply ( x );
+                    }
+                }
+            }
+
+            currentTerm = nextTerm;
+            index ++;
+        }
+
+        return result;
     }
 
     // Checks if this polynomial is a clone of the input polynomial
