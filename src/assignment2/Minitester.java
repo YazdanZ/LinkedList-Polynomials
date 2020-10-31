@@ -295,10 +295,11 @@ public class Minitester {
     public static void main ( String[] args ) {
 
         Polynomial polynomial = new Polynomial ();
-        polynomial.addTerm ( new Term ( 4, new BigInteger ( "2" ) ) );
-//        polynomial.addTerm ( new Term ( 3, new BigInteger ( "3" ) ) );
-//        polynomial.addTerm ( new Term ( 2, new BigInteger ( "1" ) ) );
-//        polynomial.addTerm ( new Term ( 2, new BigInteger ( "5" ) ) );
+        polynomial.addTerm ( new Term ( 7, new BigInteger ( "10" ) ) );
+        polynomial.addTerm ( new Term ( 4, new BigInteger ( "5" ) ) );
+        polynomial.addTerm ( new Term ( 2, new BigInteger ( "6" ) ) );
+      //  polynomial.addTerm ( new Term ( 0, new BigInteger ( "4" ) ) );
+
         System.out.println (polynomial.eval ( new BigInteger ( "3" ) ).toString ());
 
         testAddTerm1 ();

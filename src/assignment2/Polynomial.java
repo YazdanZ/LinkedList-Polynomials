@@ -164,12 +164,32 @@ public class Polynomial implements DeepClone<Polynomial> {
                 currentTerm = nextTerm;
                 result = currentTerm.getCoefficient ();
 
-                continue;
+                // if there is only term in the polynomial
+                if(index == size ()){
+                    for (int i = 0; i < currentTerm.getExponent (); i++){
+                        result = result.multiply ( x );
+                    }
+                }
 
+                continue;
             }
 
             if (nextTerm.getExponent () == currentTerm.getExponent () - 1 ){
                 result = result.multiply ( x ).add ( nextTerm.getCoefficient () );
+
+                if(index == size () - 1){
+                    for (int i = 0; i < nextTerm.getExponent (); i++){
+                        result = result.multiply ( x );
+                    }
+                }
+            }
+
+            if (nextTerm.getExponent () != currentTerm.getExponent () - 1){
+                for (int i = currentTerm.getExponent (); i > nextTerm.getExponent (); i--){
+                    result = result.multiply ( x );
+                }
+
+                result = result.add( nextTerm.getCoefficient () );
 
                 if(index == size () - 1){
                     for (int i = 0; i < nextTerm.getExponent (); i++){
