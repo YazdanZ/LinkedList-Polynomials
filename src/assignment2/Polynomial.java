@@ -81,10 +81,24 @@ public class Polynomial implements DeepClone<Polynomial> {
         return polynomial.get ( index );
     }
 
-    //TODO: Add two polynomial without modifying either
+    /**
+     * Add two polynomial and return the resulting polynomial
+     *
+     * @param p1 polynomial1
+     * @param p2 polynomial2
+     * @return resulting polynomial from the addition of polynomial1 and polynomial2
+     */
     public static Polynomial add ( Polynomial p1, Polynomial p2 ) {
-        /**** ADD CODE HERE ****/
-        return null;
+
+        Polynomial resultPolynomial = new Polynomial ();
+
+        for (Term term : p1.polynomial)
+            resultPolynomial.addTerm ( term );
+
+        for (Term term : p2.polynomial)
+            resultPolynomial.addTerm ( term );
+
+        return resultPolynomial;
     }
 
     //TODO: multiply this polynomial by a given term.
