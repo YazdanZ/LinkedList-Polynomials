@@ -101,9 +101,24 @@ public class Polynomial implements DeepClone<Polynomial> {
         return resultPolynomial;
     }
 
-    //TODO: multiply this polynomial by a given term.
+    /**
+     * Multiply the polynomial by a given term
+     * @param t term by which to multiply the polynomials
+     */
     public void multiplyTerm ( Term t ) {
-        /**** ADD CODE HERE ****/
+        int argumentTermExponent = t.getExponent ();
+        BigInteger argumentTermCoefficient = t.getCoefficient ();
+
+        if(size () == 0)
+            return;
+
+        for (Term term : this.polynomial){
+            // coefficients are multiplied
+            term.setCoefficient ( term.getCoefficient ().multiply ( argumentTermCoefficient ) );
+
+            // exponents are added to each other
+            term.setExponent ( term.getExponent () + argumentTermExponent );
+        }
     }
 
     //TODO: multiply two polynomials
