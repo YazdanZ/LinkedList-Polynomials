@@ -405,7 +405,7 @@ public class Megatester {
     }
 
     public static void runMegatester () {
-        System.out.println ( "Running assignment2.Megatester...\n" );
+        System.out.println ( "Running Megatester...\n" );
         testAddTerm1 ();
         testAdd1 ();
         testAdd2 ();
@@ -427,20 +427,22 @@ public class Megatester {
         testMultiply5 ();
         testMultiply6 ();
 
-        if (failedTests == 0) System.out.println ( "Passed all assignment2.Megatester tests!" );
-        else System.out.println ( "Failed " + failedTests + " out of " + TOTALTESTS + " assignment2.Megatester tests" );
+        if (failedTests == 0) System.out.println ( "Passed all Megatester tests!" );
+        else System.out.println ( "Failed " + failedTests + " out of " + TOTALTESTS + " Megatester tests" );
 
     }
-    // Things to test for:
-    // addTerm() 1) adding terms in weird order
-    // add same object twice, multiple nodes referring to same object?
-    // multiply() tests that evaluate the whole thing to 0 or almost 0 (telescoping)
-    // empty polynomial
+
+    public static void runUltraTester(){
+        System.out.println ( "Running UltraTester...\n" );
+        UltraTester.main ( new String[0] );
+        System.out.println ();
+    }
 
     public static void main ( String[] args ) {
 
 
         runMinitester ();
+        runUltraTester ();
         runMegatester ();
 
 

@@ -1,16 +1,17 @@
-import assignment2.*;
-import RuntimeTester.*;
+import RuntimeTester.Visualizer;
+import RuntimeTester.benchmark;
+import assignment2.Polynomial;
+import assignment2.Term;
 
-import java.awt.*;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Random;
 
 
 public class SpeedTester {
+    private static final String categoryName = "Assignment 2";
     private static Random rand = new Random ();                                          //Generates our dataset
     private static HashMap<String, Polynomial> savedPolynomials = new HashMap<> ();      //Helps speed up runtime by storing the polynomials from previous steps
-    private static final String categoryName = "Assignment 2";
 
     public static void main ( String args[] ) {
         Visualizer.launch ( SpeedTester.class );

@@ -13,11 +13,9 @@ import java.math.BigInteger;
 
 public class Term implements DeepClone<Term> {
 
-    /* instance fields */
     private int exponent;
     private BigInteger coefficient;
 
-    /* Constructors */
     public Term ( int e, BigInteger c ) {
         if (e < 0 || c.compareTo ( new BigInteger ( "0" ) ) == 0)
             throw new IllegalArgumentException ( "Invalid term" );
@@ -36,21 +34,23 @@ public class Term implements DeepClone<Term> {
         return coefficient;
     }
 
-    int getExponent () {
-        return exponent;
-    }
-
     void setCoefficient ( BigInteger d ) {
         coefficient = d;
+    }
+
+    int getExponent () {
+        return exponent;
     }
 
     void setExponent ( int a ) {
         exponent = a;
     }
 
-    // Hint: Notice that in your final submission, you are not supposed to use this
-    // method for evaluating a polynomial. This method is provided for
-    // validating your implementation of Horner's method.
+    /**
+     * This method is only for validating the implementation of Horner's method.
+     * @param x x
+     * @return evaluation of the polynomial
+     */
     BigInteger eval ( BigInteger x ) {
         BigInteger result = BigInteger.valueOf ( 1 );
         int n = exponent;

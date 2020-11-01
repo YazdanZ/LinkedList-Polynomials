@@ -2,7 +2,7 @@ package assignment2;
 
 import java.math.BigInteger;
 
-public class myTester {
+public class UltraTester {
 
     public static void addTermTest5 () {
 

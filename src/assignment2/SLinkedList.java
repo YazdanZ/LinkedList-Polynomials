@@ -1,6 +1,5 @@
 package assignment2;
 
-import java.lang.Iterable;
 import java.util.Iterator;
 
 public class SLinkedList<E extends DeepClone<E>> implements Iterable<E> {
@@ -246,6 +245,12 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E> {
         }
     }
 
+    @Override
+    public SLLIterator iterator () {
+        SLLIterator iter = new SLLIterator ( this );
+        return iter;
+
+    }
 
     // inner class defining the data type for a node in the list
     // also private since this is a data type needed only within this class.
@@ -258,14 +263,6 @@ public class SLinkedList<E extends DeepClone<E>> implements Iterable<E> {
             this.element = element;
             next = null;
         }
-    }
-
-
-    @Override
-    public SLLIterator iterator () {
-        SLLIterator iter = new SLLIterator ( this );
-        return iter;
-
     }
 
     private class SLLIterator implements Iterator<E> {   // use a different generic type, since we're defining a new class here
