@@ -51,7 +51,12 @@ public class Polynomial implements DeepClone<Polynomial> {
             if (term.getExponent () == t.getExponent ()) {
 
                 BigInteger newCoefficient = term.getCoefficient ().add ( t.getCoefficient () );
-                term.setCoefficient ( newCoefficient );
+
+                // check if the new coefficient has turned into 0 after adding the new term's coefficient to it
+                if(newCoefficient.compareTo ( new BigInteger ( "0" ) ) == 0)
+                    polynomial.remove ( position );
+                else
+                    term.setCoefficient ( newCoefficient );
 
                 break;
             }
@@ -108,6 +113,14 @@ public class Polynomial implements DeepClone<Polynomial> {
     public void multiplyTerm ( Term t ) {
         int argumentTermExponent = t.getExponent ();
         BigInteger argumentTermCoefficient = t.getCoefficient ();
+
+        if (t.getExponent () < 0)
+            return;
+
+        // if multiplied by zero
+        if(t.getCoefficient ().compareTo ( new BigInteger ( "0" ) ) == 0){
+            polynomial.clear ();
+        }
 
         if(size () == 0)
             return;

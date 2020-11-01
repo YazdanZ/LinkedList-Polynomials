@@ -1,8 +1,8 @@
 package assignment2;
 
+import java.math.BigInteger;
 import java.time.Duration;
 import java.time.Instant;
-import java.math.BigInteger;
 
 
 public class Minitester {
