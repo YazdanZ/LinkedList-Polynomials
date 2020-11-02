@@ -26,25 +26,26 @@ public class Polynomial implements DeepClone<Polynomial> {
         SLinkedList<Term> resultPolynomial = new SLinkedList<> ();
 
         if (p1 == null || p2 == null) return new Polynomial ();
-        p1 = p1.deepClone ();
-        p2 = p2.deepClone ();
+
+        Polynomial p1Cloned = p1.deepClone ();
+        Polynomial p2Cloned = p2.deepClone ();
 
 
-        if (p1.size () == 0)
-            return p2;
-        if (p2.size () == 0)
-            return p1;
+        if (p1Cloned.size () == 0)
+            return p2Cloned;
+        if (p2Cloned.size () == 0)
+            return p1Cloned;
 
 
         int arraySize;
-        arraySize = Math.max ( p1.getTerm ( 0 ).getExponent (), p2.getTerm ( 0 ).getExponent () );
+        arraySize = Math.max ( p1Cloned.getTerm ( 0 ).getExponent (), p2Cloned.getTerm ( 0 ).getExponent () );
         Term[] terms = new Term[arraySize + 1];
 
-        for (Term term : p1.polynomial) {
+        for (Term term : p1Cloned.polynomial) {
             terms[term.getExponent ()] = term;
         }
 
-        for (Term term : p2.polynomial) {
+        for (Term term : p2Cloned.polynomial) {
             if (terms[term.getExponent ()] == null) {
                 terms[term.getExponent ()] = term;
             } else {
@@ -67,15 +68,39 @@ public class Polynomial implements DeepClone<Polynomial> {
 
     public static Polynomial multiply ( Polynomial p1, Polynomial p2 ) {
 
-        Polynomial resultPolynomial = new Polynomial ();
+        SLinkedList<Term> resultPolynomial = new SLinkedList<> ();
 
-        for (Term term : p1.polynomial) {
-            Polynomial deepClonedPolynomial = p2.deepClone ();
-            deepClonedPolynomial.multiplyTerm ( term );
-            resultPolynomial = Polynomial.add ( resultPolynomial, deepClonedPolynomial );
+        if(p1 == null || p2 == null || p1.size () == 0 || p2.size () == 0)
+            return new Polynomial ();
+
+        Polynomial p1Cloned = p1.deepClone ();
+        Polynomial p2Cloned = p2.deepClone ();
+
+        int arraySize;
+        arraySize = p1Cloned.getTerm ( 0 ).getExponent () + p2Cloned.getTerm ( 0 ).getExponent ();
+        Term[] product = new Term[arraySize + 1];
+
+        for ( Term term1 : p1Cloned.polynomial )
+            for (Term term2 : p2Cloned.polynomial){
+                BigInteger newCoeff = term1.getCoefficient ().multiply ( term2.getCoefficient () );
+                if(product[term1.getExponent () + term2.getExponent ()] == null)
+                    product[term1.getExponent () + term2.getExponent ()] = new Term ( term1.getExponent () + term2.getExponent (), newCoeff );
+                else {
+                    BigInteger existingCoeff = product[term1.getExponent () + term2.getExponent ()].getCoefficient ();
+                    newCoeff = existingCoeff.add ( newCoeff );
+                    if( newCoeff.compareTo ( new BigInteger ( "0" ) ) == 0)
+                        product[term1.getExponent () + term2.getExponent ()] = null;
+                    else
+                        product[term1.getExponent () + term2.getExponent ()].setCoefficient ( existingCoeff.add ( newCoeff ) );
+                }
+            }
+
+        for (int i = product.length - 1; i >= 0; i--) {
+            if (product[i] != null)
+                resultPolynomial.addLast ( product[i] );
         }
 
-        return resultPolynomial;
+        return new Polynomial (resultPolynomial);
     }
 
     public int size () {
