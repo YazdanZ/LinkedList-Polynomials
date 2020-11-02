@@ -23,15 +23,46 @@ public class Polynomial implements DeepClone<Polynomial> {
      */
     public static Polynomial add ( Polynomial p1, Polynomial p2 ) {
 
-        Polynomial resultPolynomial = new Polynomial ();
+        SLinkedList<Term> resultPolynomial = new SLinkedList<> ();
 
-        for (Term term : p1.polynomial)
-            resultPolynomial.addTerm ( term );
+        if (p1 == null || p2 == null) return new Polynomial ();
+        p1 = p1.deepClone ();
+        p2 = p2.deepClone ();
 
-        for (Term term : p2.polynomial)
-            resultPolynomial.addTerm ( term );
 
-        return resultPolynomial;
+        if (p1.size () == 0)
+            return p2;
+        if (p2.size () == 0)
+            return p1;
+
+
+        int arraySize;
+        arraySize = Math.max ( p1.getTerm ( 0 ).getExponent (), p2.getTerm ( 0 ).getExponent () );
+        Term[] terms = new Term[arraySize + 1];
+
+        for (Term term : p1.polynomial) {
+            terms[term.getExponent ()] = term;
+        }
+
+        for (Term term : p2.polynomial) {
+            if (terms[term.getExponent ()] == null) {
+                terms[term.getExponent ()] = term;
+            } else {
+                BigInteger arrayCoefficient = terms[term.getExponent ()].getCoefficient ();
+                BigInteger newCoefficient = arrayCoefficient.add ( term.getCoefficient () );
+                terms[term.getExponent ()].setCoefficient ( newCoefficient );
+                if (newCoefficient.compareTo ( new BigInteger ( "0" ) ) == 0) {
+                    terms[term.getExponent ()] = null;
+                }
+            }
+        }
+
+        for (int i = terms.length - 1; i >= 0; i--) {
+            if (terms[i] != null)
+                resultPolynomial.addLast ( terms[i] );
+        }
+
+        return new Polynomial ( resultPolynomial );
     }
 
     public static Polynomial multiply ( Polynomial p1, Polynomial p2 ) {
@@ -51,7 +82,11 @@ public class Polynomial implements DeepClone<Polynomial> {
         return polynomial.size ();
     }
 
-    // Returns a deep copy of the object.
+    /**
+     * Deep copy the polynomial
+     *
+     * @return a deep copy of the object
+     */
     public Polynomial deepClone () {
         return new Polynomial ( polynomial.deepClone () );
     }
