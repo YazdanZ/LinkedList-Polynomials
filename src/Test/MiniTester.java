@@ -1,4 +1,4 @@
-package assignment2.Test;
+package Test;
 
 import assignment2.Polynomial;
 import assignment2.Term;
@@ -8,31 +8,31 @@ import java.time.Duration;
 import java.time.Instant;
 
 
-public class Minitester {
-    public static void testAddTerm1 () {
-        Polynomial pStudent = new Polynomial ();
+public class MiniTester {
+    private static void testAddTerm1 () {
+        Polynomial pActual = new Polynomial ();
         Polynomial pExpected = new Polynomial ();
 
-        pStudent.addTerm ( new Term ( 1, new BigInteger ( "1" ) ) );
+        pActual.addTerm ( new Term ( 1, new BigInteger ( "1" ) ) );
         pExpected.addTermLast ( new Term ( 1, new BigInteger ( "1" ) ) );
 
         System.out.print ( "addTerm() test #1: adding a single term..." );
-        if (pStudent.size () != 1 || pExpected.size () != 1 || !pStudent.isDeepClone ( pExpected )) {
+        if (pActual.size () != 1 || pExpected.size () != 1 || !pActual.isDeepClone ( pExpected )) {
             System.out.println ( "Failed." );
         } else {
             System.out.println ( "Passed." );
         }
     }
 
-    public static void testAddTerm2 () {
-        Polynomial pStudent = new Polynomial ();
+    private static void testAddTerm2 () {
+        Polynomial pActual = new Polynomial ();
         Polynomial pExpected = new Polynomial ();
 
-        pStudent.addTerm ( new Term ( 4, new BigInteger ( "5" ) ) );
-        pStudent.addTerm ( new Term ( 3, new BigInteger ( "4" ) ) );
-        pStudent.addTerm ( new Term ( 2, new BigInteger ( "3" ) ) );
-        pStudent.addTerm ( new Term ( 1, new BigInteger ( "2" ) ) );
-        pStudent.addTerm ( new Term ( 0, new BigInteger ( "1" ) ) );
+        pActual.addTerm ( new Term ( 4, new BigInteger ( "5" ) ) );
+        pActual.addTerm ( new Term ( 3, new BigInteger ( "4" ) ) );
+        pActual.addTerm ( new Term ( 2, new BigInteger ( "3" ) ) );
+        pActual.addTerm ( new Term ( 1, new BigInteger ( "2" ) ) );
+        pActual.addTerm ( new Term ( 0, new BigInteger ( "1" ) ) );
 
         pExpected.addTermLast ( new Term ( 4, new BigInteger ( "5" ) ) );
         pExpected.addTermLast ( new Term ( 3, new BigInteger ( "4" ) ) );
@@ -41,22 +41,22 @@ public class Minitester {
         pExpected.addTermLast ( new Term ( 0, new BigInteger ( "1" ) ) );
 
         System.out.print ( "addTerm() test #2: adding multiple terms in descending order..." );
-        if (pStudent.size () != 5 || pExpected.size () != 5 || !pStudent.isDeepClone ( pExpected )) {
+        if (pActual.size () != 5 || pExpected.size () != 5 || !pActual.isDeepClone ( pExpected )) {
             System.out.println ( "Failed." );
         } else {
             System.out.println ( "Passed." );
         }
     }
 
-    public static void testAddTerm3 () {
-        Polynomial pStudent = new Polynomial ();
+    private static void testAddTerm3 () {
+        Polynomial pActual = new Polynomial ();
         Polynomial pExpected = new Polynomial ();
 
-        pStudent.addTerm ( new Term ( 0, new BigInteger ( "1" ) ) );
-        pStudent.addTerm ( new Term ( 1, new BigInteger ( "1" ) ) );
-        pStudent.addTerm ( new Term ( 2, new BigInteger ( "1" ) ) );
-        pStudent.addTerm ( new Term ( 3, new BigInteger ( "1" ) ) );
-        pStudent.addTerm ( new Term ( 4, new BigInteger ( "1" ) ) );
+        pActual.addTerm ( new Term ( 0, new BigInteger ( "1" ) ) );
+        pActual.addTerm ( new Term ( 1, new BigInteger ( "1" ) ) );
+        pActual.addTerm ( new Term ( 2, new BigInteger ( "1" ) ) );
+        pActual.addTerm ( new Term ( 3, new BigInteger ( "1" ) ) );
+        pActual.addTerm ( new Term ( 4, new BigInteger ( "1" ) ) );
 
         pExpected.addTermLast ( new Term ( 4, new BigInteger ( "1" ) ) );
         pExpected.addTermLast ( new Term ( 3, new BigInteger ( "1" ) ) );
@@ -65,22 +65,22 @@ public class Minitester {
         pExpected.addTermLast ( new Term ( 0, new BigInteger ( "1" ) ) );
 
         System.out.print ( "addTerm() test #3: adding multiple terms in ascending order..." );
-        if (pStudent.size () != 5 || pExpected.size () != 5 || !pStudent.isDeepClone ( pExpected )) {
+        if (pActual.size () != 5 || pExpected.size () != 5 || !pActual.isDeepClone ( pExpected )) {
             System.out.println ( "Failed." );
         } else {
             System.out.println ( "Passed." );
         }
     }
 
-    public static void testAddTerm4 () {
-        Polynomial pStudent = new Polynomial ();
+    private static void testAddTerm4 () {
+        Polynomial pActual = new Polynomial ();
         Polynomial pExpected = new Polynomial ();
 
-        pStudent.addTerm ( new Term ( 4, new BigInteger ( "4" ) ) );
-        pStudent.addTerm ( new Term ( 3, new BigInteger ( "3" ) ) );
-        pStudent.addTerm ( new Term ( 2, new BigInteger ( "2" ) ) );
-        pStudent.addTerm ( new Term ( 1, new BigInteger ( "1" ) ) );
-        pStudent.addTerm ( new Term ( 2, new BigInteger ( "-1" ) ) );
+        pActual.addTerm ( new Term ( 4, new BigInteger ( "4" ) ) );
+        pActual.addTerm ( new Term ( 3, new BigInteger ( "3" ) ) );
+        pActual.addTerm ( new Term ( 2, new BigInteger ( "2" ) ) );
+        pActual.addTerm ( new Term ( 1, new BigInteger ( "1" ) ) );
+        pActual.addTerm ( new Term ( 2, new BigInteger ( "-1" ) ) );
 
         pExpected.addTermLast ( new Term ( 4, new BigInteger ( "4" ) ) );
         pExpected.addTermLast ( new Term ( 3, new BigInteger ( "3" ) ) );
@@ -88,14 +88,14 @@ public class Minitester {
         pExpected.addTermLast ( new Term ( 1, new BigInteger ( "1" ) ) );
 
         System.out.print ( "addTerm() test #4: combining terms of the same exponent..." );
-        if (pStudent.size () != 4 || pExpected.size () != 4 || !pStudent.isDeepClone ( pExpected )) {
+        if (pActual.size () != 4 || pExpected.size () != 4 || !pActual.isDeepClone ( pExpected )) {
             System.out.println ( "Failed." );
         } else {
             System.out.println ( "Passed." );
         }
     }
 
-    public static void testMultiplyTerm1 () {
+    private static void testMultiplyTerm1 () {
         Polynomial actual = new Polynomial ();
         Polynomial expected = new Polynomial ();
 
@@ -112,7 +112,7 @@ public class Minitester {
         }
     }
 
-    public static void testMultiplyTerm2 () {
+    private static void testMultiplyTerm2 () {
         Polynomial actual = new Polynomial ();
         Polynomial expected = new Polynomial ();
 
@@ -129,7 +129,7 @@ public class Minitester {
         }
     }
 
-    public static void testMultiplyTerm3 () {
+    private static void testMultiplyTerm3 () {
         Polynomial actual = new Polynomial ();
         Polynomial expected = new Polynomial ();
 
@@ -151,7 +151,7 @@ public class Minitester {
         }
     }
 
-    public static void testMultiplyTerm4 () {
+    private static void testMultiplyTerm4 () {
         Polynomial actual = new Polynomial ();
         Polynomial expected = new Polynomial ();
 
@@ -173,7 +173,7 @@ public class Minitester {
         }
     }
 
-    public static void stresstestMultiplyTerm () {
+    private static void stresstestMultiplyTerm () {
         int nTerms = 100000;
         Polynomial p = new Polynomial ();
 
@@ -196,7 +196,7 @@ public class Minitester {
         }
     }
 
-    public static void testEval1 () {
+    private static void testEval1 () {
         int nTerms = 30;
         Polynomial p1 = new Polynomial ();
 
@@ -214,7 +214,7 @@ public class Minitester {
         }
     }
 
-    public static void testEval2 () {
+    private static void testEval2 () {
         int nTerms = 10;
         Polynomial p1 = new Polynomial ();
 
@@ -232,7 +232,7 @@ public class Minitester {
         }
     }
 
-    public static void testEval3 () {
+    private static void testEval3 () {
         Polynomial p1 = new Polynomial ();
 
         p1.addTermLast ( new Term ( 12, new BigInteger ( Integer.toString ( 1 ) ) ) );
@@ -251,7 +251,7 @@ public class Minitester {
         }
     }
 
-    public static void testEval4 () {
+    private static void testEval4 () {
         Polynomial p1 = new Polynomial ();
 
         p1.addTermLast ( new Term ( 11, new BigInteger ( Integer.toString ( 1 ) ) ) );
@@ -270,7 +270,7 @@ public class Minitester {
         }
     }
 
-    public static void stresstestEval1 () {
+    private static void stresstestEval1 () {
         int nTerms = 50000;
         Polynomial p1 = new Polynomial ();
 
@@ -295,7 +295,7 @@ public class Minitester {
         }
     }
 
-    public static void stresstestEval2 () {
+    private static void stresstestEval2 () {
         int nTerms = 5000;
         Polynomial p1 = new Polynomial ();
 
@@ -322,7 +322,7 @@ public class Minitester {
         testAddTerm3 ();
         testAddTerm4 ();
 
-        System.out.println ( "" );
+        System.out.println ();
 
         testMultiplyTerm1 ();
         testMultiplyTerm2 ();
@@ -330,7 +330,7 @@ public class Minitester {
         testMultiplyTerm4 ();
         stresstestMultiplyTerm ();
 
-        System.out.println ( "" );
+        System.out.println ();
 
         testEval1 ();
         testEval2 ();

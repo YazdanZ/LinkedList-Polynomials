@@ -66,6 +66,12 @@ public class Polynomial implements DeepClone<Polynomial> {
         return new Polynomial ( resultPolynomial );
     }
 
+    /**
+     * Multiply two polynomials
+     * @param p1 polynomial 1
+     * @param p2 polynomial 2
+     * @return resulting polynomial
+     */
     public static Polynomial multiply ( Polynomial p1, Polynomial p2 ) {
 
         SLinkedList<Term> resultPolynomial = new SLinkedList<> ();

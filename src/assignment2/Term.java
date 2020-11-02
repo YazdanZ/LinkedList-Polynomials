@@ -29,7 +29,6 @@ public class Term implements DeepClone<Term> {
         return new Term ( exponent, coefficient );
     }
 
-    /* Instance methods */
     public BigInteger getCoefficient () {
         return coefficient;
     }

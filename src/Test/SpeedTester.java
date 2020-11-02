@@ -1,4 +1,4 @@
-package assignment2.Test;
+package Test;
 
 import RuntimeTester.Visualizer;
 import RuntimeTester.benchmark;
@@ -11,11 +11,11 @@ import java.util.Random;
 
 
 public class SpeedTester {
-    private static final String categoryName = "Assignment 2";
-    private static Random rand = new Random ();                                          //Generates our dataset
-    private static HashMap<String, Polynomial> savedPolynomials = new HashMap<> ();      //Helps speed up runtime by storing the polynomials from previous steps
+    private static final String categoryName = "LinkedList Polynomials";
+    private static final Random rand = new Random ();                                          //Generates our dataset
+    private static final HashMap<String, Polynomial> savedPolynomials = new HashMap<> ();      //Helps speed up runtime by storing the polynomials from previous steps
 
-    public static void main ( String args[] ) {
+    public static void main ( String[] args ) {
         Visualizer.launch ( SpeedTester.class );
     }
 

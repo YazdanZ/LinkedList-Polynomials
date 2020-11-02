@@ -1,28 +1,17 @@
-package assignment2.Test;
+package Test;
 
 import assignment2.Polynomial;
 import assignment2.Term;
 
 import java.math.BigInteger;
 
-public class Megatester {
+public class MegaTester {
 
-    private static final int TOTALTESTS = Megatester.class.getDeclaredMethods ().length - 4;
+    private static final int TOTALTESTS = MegaTester.class.getDeclaredMethods ().length - 4;
     private static int failedTests = 0;
 
-    public static void runMinitester () {
-        System.out.println ( "Running Minitester...\n" );
-        Minitester.main ( new String[0] );
-        System.out.println ();
-    }
 
-    public static void runUltraTester () {
-        System.out.println ( "Running Ultra tester...\n" );
-        UltraTester.main ( new String[0] );
-        System.out.println ();
-    }
-
-    public static void testAddTerm1 () {
+    private static void testAddTerm1 () {
         // adds a term which should be inserted in the middle of a polynomial
         Polynomial p1 = new Polynomial ();
         Polynomial pExpected = new Polynomial ();
@@ -41,7 +30,7 @@ public class Megatester {
         }
     }
 
-    public static void testAddTerm2 () {
+    private static void testAddTerm2 () {
         // adds an empty term
         Polynomial p1 = new Polynomial ();
         Polynomial pExpected = new Polynomial ();
@@ -64,7 +53,7 @@ public class Megatester {
         }
     }
 
-    public static void testAdd1 () {
+    private static void testAdd1 () {
         // tests general functioning of add()
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -92,7 +81,7 @@ public class Megatester {
         }
     }
 
-    public static void testAdd2 () {
+    private static void testAdd2 () {
         // adds two polynomials where two terms cancel out
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -116,7 +105,7 @@ public class Megatester {
 
     }
 
-    public static void testAdd3 () {
+    private static void testAdd3 () {
         // adds a polynomial to an empty polynomial
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -140,7 +129,7 @@ public class Megatester {
         }
     }
 
-    public static void testAdd4 () {
+    private static void testAdd4 () {
         // adds two polynomials which should result in an empty polynomial
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -157,7 +146,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiplyTerm1 () {
+    private static void testMultiplyTerm1 () {
         // multiplies a polynomial by a term with coefficient 0
         Polynomial p1 = new Polynomial ();
         Polynomial pExpected = new Polynomial ();
@@ -176,7 +165,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiplyTerm2 () {
+    private static void testMultiplyTerm2 () {
         // multiplies an empty polynomial by a term with coefficient 0
         Polynomial p1 = new Polynomial ();
         Polynomial pExpected = new Polynomial ();
@@ -192,7 +181,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiplyTerm3 () {
+    private static void testMultiplyTerm3 () {
         // multiplies an empty polynomial by a term
         Polynomial p1 = new Polynomial ();
         Polynomial pExpected = new Polynomial ();
@@ -207,7 +196,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiply1 () {
+    private static void testMultiply1 () {
         // tests basic functioning of multiply()
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -229,7 +218,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiply2 () {
+    private static void testMultiply2 () {
         // multiplies a polynomial by an empty polynomial
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -246,7 +235,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiply3 () {
+    private static void testMultiply3 () {
         // multiplies a polynomial by an empty polynomial
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -263,7 +252,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiply4 () {
+    private static void testMultiply4 () {
         // multiplies three polynomials together, where some terms disappear
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -289,7 +278,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiply5 () {
+    private static void testMultiply5 () {
         // multiplies two polynomials with a single term
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -308,7 +297,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiply6 () {
+    private static void testMultiply6 () {
         // multiplies polynomials with terms that add up to equivalent values
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -332,7 +321,7 @@ public class Megatester {
         }
     }
 
-    public static void testMultiply7 () {
+    private static void testMultiply7 () {
         // multiplies two empty polynomials
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -346,7 +335,7 @@ public class Megatester {
         }
     }
 
-    public static void testDeepClone1 () {
+    private static void testDeepClone1 () {
         // tests basic functioning of deepClone()
         Polynomial pStudent = new Polynomial ();
 
@@ -366,7 +355,7 @@ public class Megatester {
 
     }
 
-    public static void testDeepClone2 () {
+    private static void testDeepClone2 () {
         // compares a deep clone to an identical polynomial
         Polynomial pStudent = new Polynomial ();
         Polynomial pNotCopy = new Polynomial ();
@@ -387,7 +376,7 @@ public class Megatester {
         }
     }
 
-    public static void testDeepClone3 () {
+    private static void testDeepClone3 () {
         // tests deepClone() on an empty polynomial
         Polynomial pStudent = new Polynomial ();
 
@@ -399,7 +388,7 @@ public class Megatester {
         }
     }
 
-    public static void testDeepClone4 () {
+    private static void testDeepClone4 () {
         // changes term in copy, to see if terms are indeed deepclones
         Polynomial pStudent = new Polynomial ();
 
@@ -419,7 +408,7 @@ public class Megatester {
         }
     }
 
-    public static void testEval1 () {
+    private static void testEval1 () {
         // tests basic functioning of eval on a polynomial where not every exponent is present
         Polynomial pStudent = new Polynomial ();
 
@@ -435,7 +424,7 @@ public class Megatester {
         }
     }
 
-    public static void testEval2 () {
+    private static void testEval2 () {
         // tests eval by evaluating it with x = 0
         Polynomial pStudent = new Polynomial ();
 
@@ -451,7 +440,7 @@ public class Megatester {
         }
     }
 
-    public static void testEval3 () {
+    private static void testEval3 () {
         // tests evaluating an empty polynomial
         Polynomial pStudent = new Polynomial ();
 
@@ -462,7 +451,7 @@ public class Megatester {
         }
     }
 
-    public static void testEval4 () {
+    private static void testEval4 () {
         // tests evaluating an empty polynomial with x = 0
         Polynomial pStudent = new Polynomial ();
 
@@ -473,19 +462,8 @@ public class Megatester {
         }
     }
 
-    public static void Horner () {
-        int[] poly = {2, 0, 5, 2};
-        int x = 5;
-        int result = poly[0];
-        for (int i = 1; i < poly.length; i++) {
-            result = result * x + poly[i];
-        }
-        failedTests++;
-
-    }
-
-    public static void runMegatester () {
-        System.out.println ( "Running Megatester...\n" );
+    public static void main ( String[] args ) {
+        System.out.println ( "Running MegaTester...\n" );
         testAddTerm1 ();
         testAddTerm2 ();
         testAdd1 ();
@@ -511,14 +489,7 @@ public class Megatester {
         testMultiply6 ();
         testMultiply7 ();
 
-        if (failedTests == 0) System.out.println ( "Passed all Megatester tests!" );
-        else System.out.println ( "Failed " + failedTests + " out of " + TOTALTESTS + " Megatester tests" );
-
-    }
-
-    public static void main ( String[] args ) {
-        runMinitester ();
-        runUltraTester ();
-        runMegatester ();
+        if (failedTests == 0) System.out.println ( "Passed all MegaTester tests!" );
+        else System.out.println ( "Failed " + failedTests + " out of " + TOTALTESTS + " MegaTester tests" );
     }
 }

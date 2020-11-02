@@ -1,4 +1,4 @@
-package assignment2.Test;
+package Test;
 
 import assignment2.Polynomial;
 import assignment2.Term;
@@ -7,7 +7,7 @@ import java.math.BigInteger;
 
 public class UltraTester {
 
-    public static void addTermTest5 () {
+    private static void addTermTest5 () {
 
         Polynomial p1 = new Polynomial ();
         Polynomial expected = new Polynomial ();
@@ -36,7 +36,7 @@ public class UltraTester {
 
     }
 
-    public static void deepCloneTest1 () {
+    private static void deepCloneTest1 () {
 
         Polynomial p1 = new Polynomial ();
 
@@ -59,7 +59,7 @@ public class UltraTester {
 
     }
 
-    public static void deepCloneTest2 () {
+    private static void deepCloneTest2 () {
 
         Polynomial p1 = new Polynomial ();
 
@@ -84,7 +84,7 @@ public class UltraTester {
 
     }
 
-    public static void deepCloneTest3 () {
+    private static void deepCloneTest3 () {
 
         Polynomial p1 = new Polynomial ();
 
@@ -114,7 +114,7 @@ public class UltraTester {
 
     }
 
-    public static void addTest1 () {
+    private static void addTest1 () {
 
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -144,7 +144,7 @@ public class UltraTester {
 
     }
 
-    public static void addTest2 () {
+    private static void addTest2 () {
 
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -182,7 +182,7 @@ public class UltraTester {
 
     }
 
-    public static void addTest3 () {
+    private static void addTest3 () {
 
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -234,7 +234,7 @@ public class UltraTester {
 
     }
 
-    public static void multiplyTest1 () {
+    private static void multiplyTest1 () {
 
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -263,7 +263,7 @@ public class UltraTester {
 
     }
 
-    public static void multiplyTest2 () {
+    private static void multiplyTest2 () {
 
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -300,7 +300,7 @@ public class UltraTester {
 
     }
 
-    public static void multiplyTest3 () {
+    private static void multiplyTest3 () {
 
         Polynomial p1 = new Polynomial ();
         Polynomial p2 = new Polynomial ();
@@ -364,19 +364,19 @@ public class UltraTester {
 
         addTermTest5 ();
 
-        System.out.println ( "" );
+        System.out.println ();
 
         deepCloneTest1 ();
         deepCloneTest2 ();
         deepCloneTest3 ();
 
-        System.out.println ( "" );
+        System.out.println ();
 
         addTest1 ();
         addTest2 ();
         addTest3 ();
 
-        System.out.println ( "" );
+        System.out.println ();
 
         multiplyTest1 ();
         multiplyTest2 ();
