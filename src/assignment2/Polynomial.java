@@ -91,7 +91,7 @@ public class Polynomial implements DeepClone<Polynomial> {
                     if( newCoeff.compareTo ( new BigInteger ( "0" ) ) == 0)
                         product[term1.getExponent () + term2.getExponent ()] = null;
                     else
-                        product[term1.getExponent () + term2.getExponent ()].setCoefficient ( existingCoeff.add ( newCoeff ) );
+                        product[term1.getExponent () + term2.getExponent ()].setCoefficient ( newCoeff );
                 }
             }
 
