@@ -1,4 +1,7 @@
-package assignment2;
+package assignment2.Test;
+
+import assignment2.Polynomial;
+import assignment2.Term;
 
 import java.math.BigInteger;
 import java.time.Duration;

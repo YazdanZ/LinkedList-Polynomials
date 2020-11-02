@@ -1,3 +1,5 @@
+package assignment2.Test;
+
 import RuntimeTester.Visualizer;
 import RuntimeTester.benchmark;
 import assignment2.Polynomial;

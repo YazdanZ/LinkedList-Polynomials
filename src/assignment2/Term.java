@@ -30,19 +30,19 @@ public class Term implements DeepClone<Term> {
     }
 
     /* Instance methods */
-    BigInteger getCoefficient () {
+    public BigInteger getCoefficient () {
         return coefficient;
     }
 
-    void setCoefficient ( BigInteger d ) {
+    public void setCoefficient ( BigInteger d ) {
         coefficient = d;
     }
 
-    int getExponent () {
+    public int getExponent () {
         return exponent;
     }
 
-    void setExponent ( int a ) {
+    public void setExponent ( int a ) {
         exponent = a;
     }
 
@@ -51,7 +51,7 @@ public class Term implements DeepClone<Term> {
      * @param x x
      * @return evaluation of the polynomial
      */
-    BigInteger eval ( BigInteger x ) {
+    public BigInteger eval ( BigInteger x ) {
         BigInteger result = BigInteger.valueOf ( 1 );
         int n = exponent;
         while (n != 0) {
