@@ -2,8 +2,8 @@ package Test;
 
 import RuntimeTester.Visualizer;
 import RuntimeTester.benchmark;
-import assignment2.Polynomial;
-import assignment2.Term;
+import SLLPolynomial.Polynomial;
+import SLLPolynomial.Term;
 
 import java.math.BigInteger;
 import java.util.HashMap;

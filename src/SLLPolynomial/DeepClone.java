@@ -1,4 +1,4 @@
-package assignment2;
+package SLLPolynomial;
 
 public interface DeepClone<T> {
     T deepClone ();

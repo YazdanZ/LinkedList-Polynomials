@@ -1,7 +1,7 @@
 package Test;
 
-import assignment2.Polynomial;
-import assignment2.Term;
+import SLLPolynomial.Polynomial;
+import SLLPolynomial.Term;
 
 import java.math.BigInteger;
 import java.time.Duration;

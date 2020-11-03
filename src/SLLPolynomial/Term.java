@@ -1,4 +1,4 @@
-package assignment2;
+package SLLPolynomial;
 
 import java.math.BigInteger;
 
